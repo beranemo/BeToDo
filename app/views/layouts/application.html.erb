@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BeToDo</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <!-- start of menu -->
+    <div class = "navbar navbar-inverse navbar-static-top">
+      <div class = "container">
+        <%= link_to "ToDo", todos_path(flag: "1"), :class => "navbar-brand active" %>
+        <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse navHeaderCollapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "待辦", todos_path(flag: "1") %></li>
+            <li><%= link_to "已完成", todos_path(flag: "2") %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- end of menu -->
+    <%= yield %>
+    
+    <!-- start of footer -->
+    <div class = "navbar navbar-default navbar-fixed-bottom">
+      <div class = "container">
+        <p class = "navbar-text pull-left">Site Built By Bera Ru La La</p>
+        <%= link_to raw('<i class="fa fa-plus fa-sm"></i> 新增'), new_todo_path, :class => "navbar-btn btn-danger btn pull-right" %>
+      </div>
+    </div>
+    <!-- end of footer -->
+  </body>
+
+
+  
+</html>

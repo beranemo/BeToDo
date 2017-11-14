@@ -1,0 +1,29 @@
+<div class="container">
+  <%= form_for @todo, :html => {:class => "form-horizontal center"} do |f| %>
+  <div class="form-group">
+    <%= f.label :title, "項目", class: "col-md-3 control-label" %>
+    <div class="col-md-7">
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :notes, "內容", class: "col-md-3 control-label" %>
+    <div class="col-md-7">
+      <%= f.text_field :notes, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :due_date, "到期日", class: "col-md-3 control-label" %>
+    <div class="col-md-7">
+      <%= f.date_select :due_date, class: "form-control" %>
+    </div>
+  </div>
+    <div class="form-group">
+      <div class="col-md-3 control-label">
+      </div>
+    <div class="col-md-7">
+      <%= f.submit "送出", class: "btn btn-default btn-primary" %>
+    </div>
+  </div> 
+  <% end %>
+</div>

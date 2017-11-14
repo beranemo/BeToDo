@@ -1,0 +1,52 @@
+<div class="container">
+<h1>待辦事項</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>確認</th>
+      <th>項目</th>
+      <th>內容</th>
+      <th>編輯</th>
+      <th>截止日</th>
+      <th>刪除</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @todos.each do |todo| %>
+    <tr>
+      <td>
+        <% if not todo.done %>
+           <%= link_to check_todo_path(todo), method: :post do %>
+             <i class="fa fa-square-o" aria-hidden="true"></i>
+           <% end %>
+        <% else %>
+          <%= link_to check_todo_path(todo.id), method: :post do %>
+            <i class="fa fa fa-check-square-o" aria-hidden="true"></i>
+          <% end %>
+        <% end %>  
+      </td>
+      <td><%= todo.title %></td>
+      <td>
+        <%= link_to '<i class="fa fa-file-text-o" aria-hidden="true"></i>'.html_safe, todo_path(todo.id) %> 
+      </td>
+      <td>
+        <%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_todo_path(todo.id) %> 
+      </td>
+      <td><%= todo.due_date.to_s.slice(0..9) %></td>
+      <td>
+        
+        <% if todo.due_date >= Date.today %>
+        
+        <%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, todo_path(todo), method: :delete, data: {confirm: "Are you sure you want to delete?"} %> 
+        
+        <% else %>
+            <i class="fa fa-trash-o" aria-hidden="true" style="color:gray"></i>
+        <% end %>
+        
+        
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
