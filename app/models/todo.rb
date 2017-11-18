@@ -1,2 +1,3 @@
 class Todo < ApplicationRecord
+  
 end
