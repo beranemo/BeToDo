@@ -1,13 +1,13 @@
 class TodosController < ApplicationController
 
   def index
-    @x = params[:flag]
+    x = params[:flag]
     
-    if @x == "0"
+    if x == "0"
      @todos = Todo.all
-    elsif @x == "1"
+    elsif x == "1"
       @todos = Todo.where(done: false)
-    elsif @x == "2"
+    elsif x == "2"
       @todos = Todo.where(done: true)
     else
       @todos = Todo.where(done: false)
@@ -78,8 +78,5 @@ class TodosController < ApplicationController
   def todo_params
     params.require(:todo).permit(:title, :notes, :due_date, :done)
   end
-
-  
-  
 
 end
